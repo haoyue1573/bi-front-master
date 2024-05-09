@@ -16,7 +16,8 @@ import '@/icons' // icon
 import '@/permission' // permission control
 
 import echarts from '@/utils/echarts'
-
+import { VisualMapComponent } from 'echarts/components';
+echarts.use([VisualMapComponent]);
 
 /**
  * If you don't want to use mock-server

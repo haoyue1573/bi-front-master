@@ -26,6 +26,8 @@
 <script>
 import axios from 'axios'
 
+import { Message } from 'element-ui'
+
 /*
  使用js原生对象做演示
 const ws = new WebSocket('ws://localhost:8000/websocket/')
@@ -70,30 +72,9 @@ export default {
       const message = this.inputMessage
       const identification = this.identification
       this.webSocketObject.send(JSON.stringify({
-        id: 1,
         message,
-        identification,
-        time: new Date().getTime()
       }))
-
-/*       if (this.inputMessage.trim()) {
-        this.messages.push({ sender: 'user', content: this.inputMessage ,avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif'});
-        console.log(this.messages)
-        this.userQuestion = this.inputMessage
-        this.inputMessage = '';
-        axios.get(`http://123.249.10.204:9903/xfModel/test?uid=8848&text=${this.userQuestion}`)
-          .then(response => {
-            // 处理响应数据
-            this.messages.push({sender: 'bot',content: response.data.data,avatar:'https://al-bi.oss-cn-beijing.aliyuncs.com/20230427203550_d4fc2.heif'})
-          })
-          .catch(error => {
-            // 处理错误
-           console.log('ai请求失败',error)
-          });
-        this.$nextTick(() => {
-          this.scrollToBottom();
-        });
-      } */
+      this.inputMessage = ""
     },
     scrollToBottom() {
       const chatContainer = document.querySelector('.chat-container');
@@ -111,8 +92,9 @@ export default {
       console.log('与服务端连接打开->',e)
     },
     webSocketOnMessage(e){
-      console.log('来自服务端的消息->',e)
-      this.messages.push({sender: 'bot',content: e,avatar:'https://al-bi.oss-cn-beijing.aliyuncs.com/20230427203550_d4fc2.heif'})
+      console.log('来自服务端的消息->',e.data)
+      console.log("context的值： " ,this.messages.content)
+      this.messages.push({sender: 'bot',content: e.data,avatar:'https://al-bi.oss-cn-beijing.aliyuncs.com/20230427203550_d4fc2.heif'})
     },
     webSocketOnError(e){
       console.log('与服务端连接异常->',e)

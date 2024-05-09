@@ -64,6 +64,7 @@
 
 <script>
 import { genAsync } from "@/api/chart";
+import { Message } from 'element-ui'
 
 export default {
   data() {
@@ -83,18 +84,14 @@ export default {
       this.ChartForm.uploadFile = fileList;
     },
     genAsync() {
-      console.log("异步方法上传的表单数据：" + this.ChartForm);
-      console.log("异步方法上传的文件数据：" + this.ChartForm.uploadFile);
       this.loading = true
       this.disabled = true
       genAsync(this.ChartForm)
         .then((response) => {
-          this.AiResult.genChart = JSON.parse(response.data.genChart);
-          this.AiResult.genResult = response.data.genResult;
+          console.log("mq---seccess...")
           this.loading = false
           this.disabled = false
-          console.log("打印AI异步生成的图表option" + response.data.genChart);
-          console.log("打印AI异步生成的结论" + response.data.genResult);
+          this.$message.success("提交成功")
         })
         .catch((error) => {
           console.log(error);

@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
-      <h3 class="title">BI智能分析平台</h3>
+      <h3 class="title">BI智能与你同行</h3>
       <el-form-item prop="userAccount">
         <el-input
           v-model="loginForm.userAccount"
@@ -42,7 +42,7 @@
     </el-form>
     <!--  底部  -->
     <div class="el-login-footer">
-      <span>Copyright © 2018-2023 yuhao.vip All Rights Reserved.</span>
+      <a href="https://beian.miit.gov.cn/">豫ICP备2024052256号-1</a>
     </div>
   </div>
 </template>

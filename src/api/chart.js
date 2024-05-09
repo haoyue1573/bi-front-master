@@ -110,7 +110,7 @@ export function genAsync(ChartForm) {
   formData.append("chartType", ChartForm.chartType);
 
   return request({
-    url: '/chart/genAsync',
+    url: '/chart/gen/async/mq',
     method: 'post',
     data: formData,
     headers: { 'Content-Type': 'multipart/form-data' }
